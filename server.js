@@ -8,6 +8,7 @@ const session = require("express-session");
 const dotenv = require('dotenv');
 const socketIo = require('socket.io');
 const jwt = require("jsonwebtoken");
+const initializeSocket = require('./Socket/socket');
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 dotenv.config();
@@ -20,6 +21,8 @@ const messageRoutes = require('./routes/message');
 // App Setup
 const app = express();
 const server = http.createServer(app);
+
+initializeSocket(server);
 
 const User = require('./Models/User');
 const Item = require('./Models/Item');
@@ -62,6 +65,36 @@ app.use('/api', messageRoutes);
 //     }
 // }
 // insertData();
+app.get("/health", (_, res) => res.send("OK"));
+
+// app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+// app.get("/auth/google/nodeNinjas", passport.authenticate("google", { failureRedirect: "/unauthorized" }), async (req, res) => {
+//     try {
+//         const email = req.user?.email;
+//         if (!email) throw new Error("User email not found");
+
+//         const existingUser = await User.findOne({ email });
+//         if (existingUser) {
+//             return res.redirect("https://node-ninjas-zeta.vercel.app/login?message=You%20are%20already%20registered,%20please%20login");
+//         }
+
+//         const token = jwt.sign({ email }, process.env.SECRET_KEY, { expiresIn: "1h" });
+//         res.redirect(`https://node-ninjas-zeta.vercel.app/register?token=${token}`);
+//     } catch (error) {
+//         console.error("Google Sign-in Error:", error);
+//         res.redirect("https://node-ninjas-zeta.vercel.app/login?message=An%20error%20occurred");
+//     }
+// });
+
+// app.get("/unauthorized", (req, res) => {
+//     res.redirect("https://node-ninjas-zeta.vercel.app/login");
+// });
+
+app.get("/", (req, res) => {
+    res.send("Server running & API working ✅");
+});
+
 
 // Start Server
 const PORT = process.env.PORT || 5000;
