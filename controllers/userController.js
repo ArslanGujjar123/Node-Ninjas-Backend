@@ -4,11 +4,11 @@ const User = require('../Models/User');
 
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = User.find();
-        if (!users) {
-            return res.status(404).json({ message: "No User found" });
+        const users = await User.find().lean();
+        if (!users || users.length === 0) {
+            return res.status(404).json({ message: "No Users found" });
         }
-        res.json({ users })
+        res.json({ users });
     } catch (error) {
         console.error("error fetching users", error);
         res.status(500).json({ message: "Internal Server Error" });

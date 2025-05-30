@@ -13,7 +13,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 dotenv.config();
 
-// const { messages, items, users } = require('./data')
+const { messages, items, users } = require('./data')
 const authRoutes = require('./Auth/auth');
 const itemRoutes = require('./routes/item');
 const userRoutes = require('./routes/user');
@@ -58,7 +58,7 @@ app.use('/api', messageRoutes);
 // const insertData = async () => {
 //     try {
 
-//         await Message.insertMany(messages);
+//         await User.insertMany(users);
 //         console.log("Data inserted successfully");
 //     } catch (error) {
 //         console.log(error);
