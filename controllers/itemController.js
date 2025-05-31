@@ -8,12 +8,12 @@ exports.createItem = async (req, res) => {
             dateLost,
             description,
             location,
-            contactInfo,
+            user_id,
             imageUrl,
             type
         } = req.body;
 
-        if (!name || !category || !type) {
+        if (!name || !category || !type || user_id || description) {
             return res.status(400).json({ msg: 'Please include all required fields: name, category, type, and other relevant details.' });
         }
 
@@ -22,8 +22,8 @@ exports.createItem = async (req, res) => {
             category,
             dateLost: dateLost || "",
             description,
-            location,
-            contactInfo: contactInfo || "",
+            location: location || "",
+            user_id,
             imageUrl: imageUrl || "",
             type
         });
@@ -45,7 +45,7 @@ exports.updateItem = async (req, res) => {
             dateLost,
             description,
             location,
-            contactInfo,
+            user_id,
             imageUrl,
             type
         } = req.body;
@@ -59,7 +59,7 @@ exports.updateItem = async (req, res) => {
                     dateLost,
                     description,
                     location,
-                    contactInfo,
+                    user_id,
                     imageUrl,
                     type
                 },
@@ -92,7 +92,7 @@ exports.getAllItems = async (req, res) => {
 
 exports.getUserItems = async (req, res) => {
     try {
-        const items = await Item.find({ contactInfo: req.params.contactInfo });
+        const items = await Item.find({ contactInfo: req.params.id });
         if (!items || items.length === 0) {
             return res.status(404).json({ message: 'No items found for this contact info.' });
         }

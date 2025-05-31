@@ -19,7 +19,7 @@ const itemSchema = new mongoose.Schema({
     },
     location: {
         type: String,
-        required: true
+    
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
