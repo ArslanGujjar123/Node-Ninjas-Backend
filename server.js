@@ -12,11 +12,12 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 dotenv.config();
 
-const { messages, items, users } = require('./data')
+const { messages, items, users, claims } = require('./data')
 const authRoutes = require('./Auth/auth');
 const itemRoutes = require('./routes/item');
 const userRoutes = require('./routes/user');
 const messageRoutes = require('./routes/message');
+const claimRoutes = require('./routes/claim');
 // App Setup
 const app = express();
 const server = http.createServer(app);
@@ -26,6 +27,7 @@ initializeSocket(server);
 const User = require('./Models/User');
 const Item = require('./Models/Item');
 const Message = require('./Models/Message');
+const Claim = require('./Models/Claims');
 
 // Middleware
 app.use(cors());
@@ -53,11 +55,12 @@ app.use('/auth', authRoutes);
 app.use('/api', itemRoutes);
 app.use('/api', userRoutes);
 app.use('/api', messageRoutes);
+app.use('/api', claimRoutes);
 
 // const insertData = async () => {
 //     try {
 
-//         await User.insertMany(users);
+//         await Claim.insertMany(claims);
 //         console.log("Data inserted successfully");
 //     } catch (error) {
 //         console.log(error);

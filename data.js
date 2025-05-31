@@ -36,46 +36,117 @@ export const messages = [
 
 export const items = [
     {
-        "name": "Black Wallet",
-        "category": "Accessories",
-        "dateLost": "2025-05-10T15:00:00.000Z",
-        "description": "A black leather wallet with credit cards inside.",
-        "location": "Library",
-        "contactInfo": "alice@example.com",
-        "imageUrl": "https://example.com/images/wallet.jpg",
-        "type": "Lost"
+        name: "Black Backpack",
+        category: "Bags",
+        dateLost: new Date("2025-04-28"),
+        description: "A black backpack with a laptop inside.",
+        location: "Library",
+        user_id: "68399d3f5befd03c76a375c0", // Alice Johnson
+        imageUrl: "https://example.com/backpack.jpg",
+        type: "Lost",
+        createdAt: new Date()
     },
     {
-        "name": "Red Backpack",
-        "category": "Bags",
-        "dateLost": "2025-05-12T13:45:00.000Z",
-        "description": "A red backpack containing books and a laptop.",
-        "location": "Cafeteria",
-        "contactInfo": "bob@example.com",
-        "imageUrl": "https://example.com/images/backpack.jpg",
-        "type": "Lost"
+        name: "Car Keys",
+        category: "Keys",
+        dateLost: new Date("2025-05-01"),
+        description: "A set of car keys with a Honda logo.",
+        location: "Parking Lot A",
+        user_id: "68399d3f5befd03c76a375c1", // Bob Smith
+        imageUrl: "https://example.com/keys.jpg",
+        type: "Lost",
+        createdAt: new Date()
     },
     {
-        "name": "Gold Necklace",
-        "category": "Jewelry",
-        "dateLost": "2025-05-14T12:30:00.000Z",
-        "description": "A gold chain necklace with a heart-shaped pendant.",
-        "location": "Gym",
-        "contactInfo": "charlie@example.com",
-        "imageUrl": "https://example.com/images/necklace.jpg",
-        "type": "Lost"
+        name: "Smartphone",
+        category: "Electronics",
+        dateLost: new Date("2025-04-30"),
+        description: "A black iPhone with a cracked screen.",
+        location: "Cafeteria",
+        user_id: "68399d3f5befd03c76a375c2", // Charlie Davis
+        imageUrl: "https://example.com/iphone.jpg",
+        type: "Lost",
+        createdAt: new Date()
     },
     {
-        "name": "Phone Charger",
-        "category": "Electronics",
-        "dateLost": "2025-05-16T10:00:00.000Z",
-        "description": "A white iPhone charger.",
-        "location": "Lecture Hall",
-        "contactInfo": "dave@example.com",
-        "imageUrl": "https://example.com/images/charger.jpg",
-        "type": "Lost"
+        name: "Wallet",
+        category: "Accessories",
+        dateLost: new Date("2025-04-29"),
+        description: "A brown leather wallet with credit cards inside.",
+        location: "Gym",
+        user_id: "68399d3f5befd03c76a375c3", // Dave Wilson
+        imageUrl: "https://example.com/wallet.jpg",
+        type: "Lost",
+        createdAt: new Date()
+    },
+    {
+        name: "Gold Bracelet",
+        category: "Jewelry",
+        dateLost: new Date("2025-05-02"),
+        description: "A thin gold bracelet with a small heart charm.",
+        location: "Restroom near Library",
+        user_id: "68399d3f5befd03c76a375c0", // Alice Johnson
+        imageUrl: "https://example.com/bracelet.jpg",
+        type: "Lost",
+        createdAt: new Date()
+    },
+    {
+        name: "Water Bottle",
+        category: "Essentials",
+        dateLost: new Date("2025-05-04"),
+        description: "A blue Hydro Flask water bottle with stickers.",
+        location: "Sports Ground",
+        user_id: "68399d3f5befd03c76a375c1", // Bob Smith
+        imageUrl: "https://example.com/waterbottle.jpg",
+        type: "Found",
+        createdAt: new Date()
+    },
+    {
+        name: "Notebook",
+        category: "Stationery",
+        dateLost: new Date("2025-05-03"),
+        description: "A spiral notebook with handwritten notes.",
+        location: "Classroom B102",
+        user_id: "68399d3f5befd03c76a375c2", // Charlie Davis
+        imageUrl: "https://example.com/notebook.jpg",
+        type: "Found",
+        createdAt: new Date()
+    },
+    {
+        name: "Earphones",
+        category: "Electronics",
+        dateLost: new Date("2025-05-05"),
+        description: "White AirPods with the case missing.",
+        location: "Auditorium",
+        user_id: "68399d3f5befd03c76a375c3", // Dave Wilson
+        imageUrl: "https://example.com/earphones.jpg",
+        type: "Found",
+        createdAt: new Date()
+    },
+    {
+        name: "Watch",
+        category: "Accessories",
+        dateLost: new Date("2025-05-06"),
+        description: "A silver wristwatch with black leather straps.",
+        location: "Computer Lab",
+        user_id: "68399d3f5befd03c76a375c0", // Alice Johnson
+        imageUrl: "https://example.com/watch.jpg",
+        type: "Found",
+        createdAt: new Date()
+    },
+    {
+        name: "USB Drive",
+        category: "Electronics",
+        dateLost: new Date("2025-05-07"),
+        description: "A 32GB USB drive with academic files.",
+        location: "Library Study Room",
+        user_id: "68399d3f5befd03c76a375c1", // Bob Smith
+        imageUrl: "https://example.com/usbdrive.jpg",
+        type: "Found",
+        createdAt: new Date()
     }
 ]
+
 export const users = [
     {
         "name": "Alice Johnson",
@@ -106,4 +177,77 @@ export const users = [
         "createdAt": "2025-05-04T11:15:00.000Z"
     }
 ]
+export const claims = [
+    {
+        found_item_id: "68399d435befd03c76a375c7", // Black Wallet
+        claimant_user_id: "68399d3f5befd03c76a375c2", // Charlie Davis
+        justification: "I lost my wallet at the library on the same day. It has my student ID inside.",
+        status: "Pending",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "68399d435befd03c76a375c8", // Red Backpack
+        claimant_user_id: "68399d3f5befd03c76a375c3", // Dave Wilson
+        justification: "This backpack looks exactly like mine, which I misplaced in the cafeteria.",
+        status: "Dispute",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "68399d435befd03c76a375c9", // Gold Necklace
+        claimant_user_id: "68399d3f5befd03c76a375c0", // Alice Johnson
+        justification: "I lost a similar gold necklace at the gym. The pendant shape matches mine.",
+        status: "Pending",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "68399d435befd03c76a375ca", // Phone Charger
+        claimant_user_id: "68399d3f5befd03c76a375c1", // Bob Smith
+        justification: "This charger looks like the one I left in the lecture hall. It's a rare model.",
+        status: "Approved",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "683aae8826b7d9e97e7c40f8", // Black Backpack
+        claimant_user_id: "68399d3f5befd03c76a375c3", // Dave Wilson
+        justification: "I lost my black backpack at the library last month. It has my initials on it.",
+        status: "Denied",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "683aae8826b7d9e97e7c40f9", // Car Keys
+        claimant_user_id: "68399d3f5befd03c76a375c0", // Alice Johnson
+        justification: "I misplaced my Honda car keys in the parking lot. These match my set.",
+        status: "Pending",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "683aae8826b7d9e97e7c40fa", // Smartphone
+        claimant_user_id: "68399d3f5befd03c76a375c2", // Charlie Davis
+        justification: "I dropped my iPhone in the cafeteria. This matches the description.",
+        status: "Approved",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "683aae8826b7d9e97e7c40fb", // Wallet
+        claimant_user_id: "68399d3f5befd03c76a375c1", // Bob Smith
+        justification: "I lost a brown wallet at the gym with my driving license inside.",
+        status: "Dispute",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "683aae8826b7d9e97e7c40fc", // Gold Bracelet
+        claimant_user_id: "68399d3f5befd03c76a375c3", // Dave Wilson
+        justification: "This bracelet looks identical to the one I lost in the restroom near the library.",
+        status: "Pending",
+        createdAt: new Date()
+    },
+    {
+        found_item_id: "683aae8826b7d9e97e7c40fd", // Water Bottle
+        claimant_user_id: "68399d3f5befd03c76a375c0", // Alice Johnson
+        justification: "I lost my Hydro Flask at the sports ground. It has stickers from my trips.",
+        status: "Approved",
+        createdAt: new Date()
+    }
+];
+
 
