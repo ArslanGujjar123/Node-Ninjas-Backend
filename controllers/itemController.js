@@ -5,25 +5,25 @@ exports.createItem = async (req, res) => {
         const {
             name,
             category,
-            dateLost,
+            dateLostFound,
             description,
             location,
-            user_id,
+            user_email,
             imageUrl,
             type
         } = req.body;
 
-        if (!name || !category || !type || user_id || description) {
-            return res.status(400).json({ msg: 'Please include all required fields: name, category, type, and other relevant details.' });
-        }
+        // if (!name || !category || !type || user_id || description) {
+        //     return res.status(400).json({ msg: 'Please include all required fields: name, category, type, and other relevant details.' });
+        // }
 
         const newItem = new Item({
             name,
             category,
-            dateLost: dateLost || "",
+            dateLostFound: dateLostFound || "",
             description,
             location: location || "",
-            user_id,
+            user_email,
             imageUrl: imageUrl || "",
             type
         });
@@ -42,7 +42,7 @@ exports.updateItem = async (req, res) => {
         const {
             name,
             category,
-            dateLost,
+            dateLostFound,
             description,
             location,
             user_id,
@@ -56,7 +56,7 @@ exports.updateItem = async (req, res) => {
                 $set: {
                     name,
                     category,
-                    dateLost,
+                    dateLostFound,
                     description,
                     location,
                     user_id,

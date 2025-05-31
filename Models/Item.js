@@ -10,7 +10,7 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    dateLost: {
+    dateLostFound: {
         type: Date,
     },
     description: {
@@ -21,9 +21,9 @@ const itemSchema = new mongoose.Schema({
         type: String,
     
     },
-    user_id: {
+    user_email: {
         type: String,
-        required: true
+        
     },
     imageUrl: {
         type: String
