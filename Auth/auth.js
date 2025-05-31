@@ -52,42 +52,41 @@ router.post('/register', async (req, res) => {
 
 
 
-router.post('/login', (req, res) => {
-    const { email, password } = req.body;
+router.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-    // Find user by email
-    User.findOne({ email }).then(user => {
+        // Find user by email
+        const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ message: 'Email not found' });
         }
 
         // Check password
-        bcrypt.compare(password, user.password).then(isMatch => {
-            if (isMatch) {
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Password Incorrect' });
+        }
 
-                const payload = {
-                    id: user._id,
-                    email: email,
-                    role: user.role,
-                };
+        // Create payload
+        const payload = {
+            id: user._id,
+            email: user.email,
+            role: user.role,
+        };
 
-                // Sign token
-                jwt.sign(
-                    payload,
-                    key,
-                    { expiresIn: '4h' },
-                    (err, token) => {
-                        res.json({
-                            success: true,
-                            token: 'Bearer ' + token,
-                        });
-                    }
-                );
-            } else {
-                return res.status(400).json({ message: 'Password Incorrect' });
-            }
+        // Sign token
+        const token = jwt.sign(payload, key, { expiresIn: '4h' });
+
+        res.json({
+            success: true,
+            token: 'Bearer ' + token,
         });
-    });
+
+    } catch (error) {
+        console.error("Login error:", error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 
