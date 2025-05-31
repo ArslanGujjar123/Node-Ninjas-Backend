@@ -13,10 +13,10 @@ const initializeSocket = (server) => {
     io.on("connection", (socket) => {
         console.log(`Client connected: ${socket.id}`);
 
-        socket.on("authenticate", async (username) => {
+        socket.on("authenticate", async (email) => {
             try {
-                await User.findOneAndUpdate({ username }, { socketId: socket.id });
-                console.log(`User ${username} authenticated with socket ID: ${socket.id}`);
+                await User.findOneAndUpdate({ email }, { socketId: socket.id });
+                console.log(`User ${email} authenticated with socket ID: ${socket.id}`);
             } catch (err) {
                 console.error("Auth Error:", err);
             }
@@ -24,11 +24,18 @@ const initializeSocket = (server) => {
 
         socket.on("sendMessage", async ({ itemID, sender, receiver, content, timestamp }) => {
             try {
-                const message = new Message({ itemID, sender, receiver, content, timestamp, read: false });
+                const message = new Message({ 
+                    itemID, 
+                    sender, 
+                    receiver, 
+                    content, 
+                    timestamp, 
+                    read: false 
+                });
                 await message.save();
 
                 // Find receiver's socket ID from database
-                const receiverUser = await User.findOne({ username: receiver });
+                const receiverUser = await User.findOne({ email: receiver });
                 if (receiverUser?.socketId) {
                     io.to(receiverUser.socketId).emit("receiveMessage", message);
                 }
@@ -45,17 +52,20 @@ const initializeSocket = (server) => {
                 await Message.updateMany(
                     {
                         itemID,
-                        "sender": otherUser,
-                        "receiver": currentUser,
+                        sender: otherUser,
+                        receiver: currentUser,
                         read: false
                     },
                     { $set: { read: true } }
                 );
 
                 // Notify the other user that messages have been read
-                const otherUserData = await User.findOne({ username: otherUser });
+                const otherUserData = await User.findOne({ email: otherUser });
                 if (otherUserData?.socketId) {
-                    io.to(otherUserData.socketId).emit("messagesRead", { itemID, reader: currentUser });
+                    io.to(otherUserData.socketId).emit("messagesRead", { 
+                        itemID, 
+                        reader: currentUser 
+                    });
                 }
             } catch (err) {
                 console.error("Mark as Read Error:", err);
