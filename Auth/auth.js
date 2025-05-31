@@ -9,7 +9,7 @@ const key = process.env.SECRET_KEY;
 
 router.post('/register', async (req, res) => {
     try {
-        const { name, email, phoneNumber, password } = req.body;
+        const { username, email, phoneNumber, password } = req.body;
 
 
 
@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ success: false, message: "Email already Registered" });
         }
         const newUser = new User({
-            name,
+            username,
             email,
             phoneNumber,
             password
