@@ -42,7 +42,6 @@ router.post('/register', async (req, res) => {
         return res.json({
             success: true,
             token: 'Bearer ' + token1,
-            userId: savedUser._id
         });
     } catch (error) {
         console.error(error);
@@ -53,12 +52,12 @@ router.post('/register', async (req, res) => {
 
 
 router.post('/login', (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     // Find user by email
-    User.findOne({ username }).then(user => {
+    User.findOne({ email }).then(user => {
         if (!user) {
-            return res.status(404).json({ username: 'User not found' });
+            return res.status(404).json({ message: 'Email not found' });
         }
 
         // Check password
@@ -67,7 +66,7 @@ router.post('/login', (req, res) => {
 
                 const payload = {
                     id: user._id,
-                    email: user.email,
+                    email: email,
                     role: user.role,
                 };
 
@@ -80,7 +79,6 @@ router.post('/login', (req, res) => {
                         res.json({
                             success: true,
                             token: 'Bearer ' + token,
-                            userId: user._id
                         });
                     }
                 );

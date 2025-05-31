@@ -42,7 +42,7 @@ export const items = [
         description: "A black backpack with a laptop inside.",
         location: "Library",
         user_id: "68399d3f5befd03c76a375c0", // Alice Johnson
-        imageUrl: "https://example.com/backpack.jpg",
+        imageUrl: "https://www.eastpak.com/media/catalog/product/cache/29ced269b80dec0b4b12d4d575e52204/E/K/EK0A5B9Q_8D8_1.jpg",
         type: "Lost",
         createdAt: new Date()
     },
@@ -53,7 +53,7 @@ export const items = [
         description: "A set of car keys with a Honda logo.",
         location: "Parking Lot A",
         user_id: "68399d3f5befd03c76a375c1", // Bob Smith
-        imageUrl: "https://example.com/keys.jpg",
+        imageUrl: "https://images.pexels.com/photos/109361/pexels-photo-109361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         type: "Lost",
         createdAt: new Date()
     },
@@ -64,7 +64,7 @@ export const items = [
         description: "A black iPhone with a cracked screen.",
         location: "Cafeteria",
         user_id: "68399d3f5befd03c76a375c2", // Charlie Davis
-        imageUrl: "https://example.com/iphone.jpg",
+        imageUrl: "https://images.pexels.com/photos/163065/mobile-phone-android-apps-phone-163065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         type: "Lost",
         createdAt: new Date()
     },
@@ -75,7 +75,7 @@ export const items = [
         description: "A brown leather wallet with credit cards inside.",
         location: "Gym",
         user_id: "68399d3f5befd03c76a375c3", // Dave Wilson
-        imageUrl: "https://example.com/wallet.jpg",
+        imageUrl: "https://images.pexels.com/photos/915915/pexels-photo-915915.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         type: "Lost",
         createdAt: new Date()
     },
@@ -97,7 +97,7 @@ export const items = [
         description: "A blue Hydro Flask water bottle with stickers.",
         location: "Sports Ground",
         user_id: "68399d3f5befd03c76a375c1", // Bob Smith
-        imageUrl: "https://example.com/waterbottle.jpg",
+        imageUrl: "https://images.pexels.com/photos/1342529/pexels-photo-1342529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         type: "Found",
         createdAt: new Date()
     },
