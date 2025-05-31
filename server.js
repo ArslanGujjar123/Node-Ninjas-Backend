@@ -6,7 +6,6 @@ const http = require('http');
 const passport = require('passport');
 const session = require("express-session");
 const dotenv = require('dotenv');
-const socketIo = require('socket.io');
 const jwt = require("jsonwebtoken");
 const initializeSocket = require('./Socket/socket');
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
